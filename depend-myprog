@@ -1,0 +1,2 @@
+base.o: base.cpp base.h
+main.o: main.cpp
