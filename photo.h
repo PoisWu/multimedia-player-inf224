@@ -18,6 +18,7 @@ class Photo: public Base{
         void set_latitude(double _latitude);
         void set_longitude(double _longitude);
         void print(std::ostream&) const override;
+        void run() const override;
 };
 
 Photo::Photo():Base(){
@@ -53,6 +54,11 @@ void Photo::print(std::ostream & out_stream) const{
         << "Latitude & longitude:\t" 
         << this->latitude << ", " << this-> longitude
         << std::endl;
+}
+
+void Photo::run() const{
+    std::string command = "mpv " + this->get_file_path()+ " &";
+    system(command.data());
 }
 
 #endif //PHOTO_H

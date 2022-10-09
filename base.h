@@ -17,6 +17,6 @@ class Base{
         void set_filename(std::string _filename);
         void set_file_path(std::string _file_path) ;
         virtual void print(std::ostream &)const;
-        void run() const;
+        virtual void run() const=0;
 };
 #endif //BASE_H

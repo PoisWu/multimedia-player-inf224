@@ -32,12 +32,5 @@ void Base::print(std::ostream & out_stream) const{
         << "File Path:\t" << this->file_path << std::endl;
 }
 
-// void Base::run() const{
-//     std::string command = 
-// 
-// }
-
-
-
 
 
