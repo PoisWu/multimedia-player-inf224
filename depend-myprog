@@ -1,3 +1,0 @@
-base.o: base.cpp base.h
-film.o: film.cpp film.h video.h base.h
-main.o: main.cpp base.h photo.h film.h video.h
