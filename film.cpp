@@ -21,43 +21,40 @@ Film::~Film(){
 
 Film::Film(const Film& from):Video(from){
     this->nb_chapiter = from.get_nb_chapiter();
-    if(this->nb_chapiter==0){
-        this->chapiter_duration=nullptr;
-    }else{
+    delete[] chapiter_duration;
+    if(nb_chapiter == 0) chapiter_duration=nullptr;
+    else{
         this->chapiter_duration = new int[this->nb_chapiter];
-        for(int i=0;i<this->nb_chapiter;++i){
-            this->set_chapiter_duration(i, from.get_chapiter_duration(i));
-        }
+        this->set_chapiter_table(
+            from.get_chapiter_duration_table(), from.get_nb_chapiter());
     }
 }
 
 Film& Film::operator=(const Film& from){
     Video::operator=(from);
-    this->nb_chapiter=from.nb_chapiter;
+    this->nb_chapiter=from.get_nb_chapiter();
     delete[] chapiter_duration;
     if(nb_chapiter == 0) chapiter_duration=nullptr;
     else{
         this->chapiter_duration = new int[this->nb_chapiter];
-        for(int i=0;i<this->nb_chapiter;++i){
-            this->set_chapiter_duration(i, from.get_chapiter_duration(i));
-        }
+        this->set_chapiter_table(
+            from.get_chapiter_duration_table(), from.get_nb_chapiter());
     }
     return *this;
 }
 
-void Film::set_chapiter_duration(int index, int value){
-    if(index < this->nb_chapiter){
-        this->chapiter_duration[index]=value;
+void Film::set_chapiter_table(int const *tab, int tab_len){
+    if (tab_len == nb_chapiter){
+        for(int i=0; i<nb_chapiter ; i++){
+            this->chapiter_duration[i]=tab[i];
+        }
     }
 }
 
-int Film::get_chapiter_duration(int index) const{
-    if(index < this->nb_chapiter){
-        return this->chapiter_duration[index];
-    }else{
-        return -1;
-    }
+const int* Film::get_chapiter_duration_table() const{
+    return  chapiter_duration;
 }
+
 
 int Film::get_nb_chapiter() const{
     return this->nb_chapiter;

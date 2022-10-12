@@ -3,11 +3,12 @@
 
 #include "video.h"
 #include <iostream>
+#include <utility>
 
 class Film:public Video{
     private:
-        int nb_chapiter;
-        int* chapiter_duration;
+        int nb_chapiter{};
+        int* chapiter_duration{};
     public:
         ~Film(); 
         Film();
@@ -16,8 +17,8 @@ class Film:public Video{
         Film(const Film& from);
         Film& operator=(const Film& from);
         void print(std::ostream &) const override;
-        void set_chapiter_duration(int index , int value) ;
-        int get_chapiter_duration(int index ) const;
+        void set_chapiter_table(int const* tab, int tab_len);
+        int const* get_chapiter_duration_table() const;
         int get_nb_chapiter() const;
 };
 

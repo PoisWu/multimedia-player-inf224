@@ -11,6 +11,14 @@
 
 using namespace std;
 
+
+
+void test7(){
+
+
+}
+
+
 int main(int argc, const char* argv[])
 {
     Base** table_base = new Base*[3];
