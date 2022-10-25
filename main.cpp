@@ -97,9 +97,13 @@ void test7(){
 }
 
 void test8(){
+   Group group1 = Group("Photo");
+   group1.push_back(new Photo(12,12, "imag1.jpg", media_path+"img1.jpg"));
+   group1.push_back(new Photo(12,12, "imag2.jpg", media_path+"img2.jpg"));
+   group1.push_back(new Photo(12,12, "imag3.jpg", media_path+"img3.jpg"));
+   group1.push_back(new Film(3, 12, "vid1.mp4", media_path+"vid1.mp4"));
 
-
-
+   group1.print(cout);
 }
 
 int main(int argc, const char* argv[])
@@ -107,6 +111,7 @@ int main(int argc, const char* argv[])
     /* test4(); */
 
     /* test7(); */
+    test8();
 
 
 
