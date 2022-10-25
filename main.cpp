@@ -96,26 +96,51 @@ void test7(){
     
 }
 
-void test8(){
-   Group group1 = Group("Photo");
-   group1.push_back(new Photo(12,12, "imag1.jpg", media_path+"img1.jpg"));
-   group1.push_back(new Photo(12,12, "imag2.jpg", media_path+"img2.jpg"));
-   group1.push_back(new Photo(12,12, "imag3.jpg", media_path+"img3.jpg"));
-   group1.push_back(new Film(3, 12, "vid1.mp4", media_path+"vid1.mp4"));
+/* void test8(){ */
+/*     Group group1 = Group("Photo"); */
+/*     group1.push_back(new Photo(12,12, "imag1.jpg", media_path+"img1.jpg")); */
+/*     group1.push_back(new Photo(12,12, "imag2.jpg", media_path+"img2.jpg")); */
+/*     group1.push_back(new Photo(12,12, "imag3.jpg", media_path+"img3.jpg")); */
+/*     group1.push_back(new Film(3, 12, "vid1.mp4", media_path+"vid1.mp4")); */
+/*     group1.print(cout); */
+/* } */
 
-   group1.print(cout);
+void test9(){
+    shared_ptr<Photo> p1(new Photo(12,12, "imag1.jpg", media_path+"img1.jpg"));
+    shared_ptr<Photo> p2(new Photo(12,12, "imag2.jpg", media_path+"img2.jpg"));
+    shared_ptr<Photo> p3(new Photo(12,12, "imag3.jpg", media_path+"img3.jpg"));
+    shared_ptr<Film> f1(new Film(3, 12, "vid1.mp4", media_path+"vid1.mp4"));
+    
+    Group group1 = Group("Group1");
+    Group group2 = Group("Group2");
+    group1.push_back(p1);
+    group2.push_back(p1);
+    group1.push_back(p2);
+    group2.push_back(p2);
+    group1.push_back(p3);
+    group2.push_back(f1);
+
+    //group1: [p1, p2, p3];
+    //group2: [p1, p2, f1];
+    group1.remove(p3);
+    cout << "p3 reset, should print something" << endl;
+    p3.reset();
+    group2.remove(p2);
+    cout << "p2 reset, should print nothing" << endl;
+    p2.reset();
+    group1.remove(p2);
+    cout << "p2 reset, should print something" << endl;
+    p2.reset();
+
+    
 }
 
 int main(int argc, const char* argv[])
 {
     /* test4(); */
-
     /* test7(); */
-    test8();
-
-
+    /* test8(); */
+    test9();
 
     return 0;
-
-
 }

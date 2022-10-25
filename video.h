@@ -11,6 +11,7 @@ class Video:public Base{
         Video();
         Video(int  _video_duration, 
                 std::string _filename, std::string _file_path);
+        ~Video();
         int get_video_duration() const;
         void set_video_duration(int  _video_duration);
         void print(std::ostream &) const override;

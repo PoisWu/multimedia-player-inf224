@@ -10,9 +10,13 @@ Video::Video(int  _video_duration,
     this->video_duration=_video_duration;
 }
 
+Video::~Video(){
+    std::cout << "Deleted Video" << this->get_filename() << std::endl;
+}
+
 int Video::get_video_duration() const{
     return this->video_duration;
-};
+}
 
 void Video::set_video_duration(int  _video_duration){
     this->video_duration=_video_duration;

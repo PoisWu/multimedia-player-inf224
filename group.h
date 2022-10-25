@@ -4,9 +4,12 @@
 #include <list>
 #include <string>
 #include <iostream>
+#include <memory>
+
+using basePtr = std::shared_ptr<Base>;
 
 
-class Group: public std::list<Base *>{
+class Group: public std::list<basePtr>{
     private:
         std::string group_name;
 

@@ -13,6 +13,7 @@ class Photo: public Base{
         Photo();
         Photo(double _latitude, double _longitude, 
                 std::string _filename, std::string _file_path);
+        ~Photo();
         double get_latitude() const;
         double get_longitude() const;
         void set_latitude(double _latitude);
@@ -30,6 +31,10 @@ Photo::Photo(double _latitude, double _longitude,
         std::string _filename, std::string _file_path):Base(_filename,_file_path) {
     this->latitude=_latitude;
     this->longitude=_longitude;
+}
+
+Photo::~Photo(){
+    std::cout << " Deleted photo" << this->get_filename() << std::endl;
 }
 
 double Photo::get_latitude() const {

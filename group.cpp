@@ -1,7 +1,7 @@
 #include "group.h"
 #include <iostream>
 
-Group::Group(std::string name):std::list<Base *>(){
+Group::Group(std::string name):std::list<basePtr>(){
     this->group_name  = name;
 }
 
