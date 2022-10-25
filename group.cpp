@@ -15,6 +15,3 @@ void Group::print(std::ostream & out_stream) const{
         it->print(out_stream);
     }
 }
-
-
-

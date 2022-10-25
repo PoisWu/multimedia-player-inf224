@@ -6,6 +6,10 @@ Base::Base(){
     this->file_path="";
 }
 
+Base::~Base(){
+
+}
+
 Base::Base(std::string _filename, std::string _file_path){
     this->filename = _filename;
     this->file_path = _file_path;

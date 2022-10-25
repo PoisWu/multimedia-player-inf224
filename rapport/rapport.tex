@@ -36,8 +36,18 @@
 
 \textbf{Comment appelle-t'on ce type de méthode et comment faut-il les déclarer
 ?}
+
+Virtual void run() const=0; 
+("=0") is called pure specifier. 
+
 \textbf{ Si vous avez fait ce qui précède comme demandé, il ne sera plus
 possible d'instancer des objets de la classe de base. Pourquoi ? }
+
+Abstract class because la fonction run n'est pas implémenté. 
+
+
+
+
 
 \section{Traitement uniforme}
 
@@ -52,21 +62,28 @@ des objets ou des pointeurs vers ces objets ? Pourquoi ?  Comparer à Java.}
 \section{Films et tableaux}
 \section{Destruction et copie des objets}
 
-Parmi les classes précédemment écrites quelles sont celles qu'il faut modifier
-afin qu'il n'y ait pas de fuite mémoire quand on détruit les objets ? Modifiez
-le code de manière à l'éviter.
+\textbf{Parmi les classes précédemment écrites quelles sont celles qu'il faut
+modifier afin qu'il n'y ait pas de fuite mémoire quand on détruit les objets ?
+Modifiez le code de manière à l'éviter.}
+- Virtual descturceur dans la class Base
+- Modify the descructor of Film, delete[] chapiter_duration_table
 
 
 
-La copie d'objet peut également poser problème quand ils ont des variables
+
+\textbf{La copie d'objet peut également poser problème quand ils ont des variables
 d'instance qui sont des pointeurs. Quel est le problème et quelles sont les
-solutions ? Implementez-en une. 
+solutions ? Implementez-en une. } 
+
+copy constructeur, operator=
 
 \section{Créer des groupes}
-Le groupe ne doit pas détruire les objets quand il est détruit car un objet
-peut appartenir à plusieurs groupes (on verra ce point à la question suivante).
-On rappelle aussi que la liste d'objets doit en fait être une liste de pointeurs
-d'objets. Pourquoi ? Comparer à Java. 
+\textbf{On rappelle aussi que la liste d'objets doit en fait être une liste de
+pointeurs d'objets. Pourquoi ? Comparer à Java.}
+Pour être polymorphisme, parce que \texttt{list<T>} prend un type fixe. 
+
+
+
 
 
 \section{Gestion automatique de la mémoire}

@@ -11,6 +11,7 @@ class Base{
         
     public:
         Base();
+        virtual ~Base();
         Base(std::string _filename, std::string _file_path);//With argument
         std::string get_filename() const;
         std::string get_file_path() const;
