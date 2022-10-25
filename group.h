@@ -6,7 +6,6 @@
 #include <iostream>
 #include <memory>
 
-using basePtr = std::shared_ptr<Base>;
 
 
 class Group: public std::list<basePtr>{
@@ -20,5 +19,6 @@ class Group: public std::list<basePtr>{
 }; 
 
 
+using groupPtr = std::shared_ptr<Group>;
 
 #endif //GROUP_H

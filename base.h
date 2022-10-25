@@ -2,7 +2,9 @@
 #define BASE_H
 
 #include <iostream>
+#include <memory>
 #include <string> 
+
 
 class Base{
     private:
@@ -20,4 +22,6 @@ class Base{
         virtual void print(std::ostream &)const;
         virtual void run() const=0;
 };
+
+using basePtr = std::shared_ptr<Base>;
 #endif //BASE_H
