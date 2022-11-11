@@ -2,6 +2,7 @@
 #define VIDEO_H
 
 #include "base.h"
+#include <memory> 
 #include <iostream>
 
 class Video:public Base{
@@ -16,9 +17,10 @@ class Video:public Base{
         void set_video_duration(int  _video_duration);
         void print(std::ostream &) const override;
         void run() const override;
+        
 };
 
-
+using videoPtr = std::shared_ptr<Video>;
 
 #endif //VIDEO_H
 

@@ -22,5 +22,7 @@ class Film:public Video{
         int get_nb_chapiter() const;
 };
 
+using filmPtr = std::shared_ptr<Film>;
+
 #endif //FILM_H
 

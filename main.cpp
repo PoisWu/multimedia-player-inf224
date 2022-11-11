@@ -9,6 +9,7 @@
 #include "photo.h"
 #include "film.h"
 #include "group.h"
+#include "gestion.h"
 
 using namespace std;
 
@@ -135,12 +136,29 @@ void test9(){
     
 }
 
+void test10(){
+    Gestion gestion = Gestion();
+    auto pho1 = gestion.create_photo(11,11, "imag1.jpg", media_path+"img1.jpg");
+    auto pho2 = gestion.create_photo(22,22, "imag2.jpg", media_path+"img2.jpg");
+    auto film1 = gestion.create_film(1, 3, "film1.mp4", media_path+"film1.mp4");
+    auto gr1 = gestion.create_group("gr1");
+    
+    std::cout << "---------" << std::endl;
+    gestion.print_base(std::cout, "imag1.jpg");
+    std::cout << "---------" << std::endl;
+    gestion.print_base(std::cout, "film1.mp4");
+    std::cout << "---------" << std::endl;
+    gestion.print_base(std::cout, "gr1");
+    std::cout << "---------" << std::endl;
+    gestion.print_group(std::cout, "gr1");
+}
+
 int main(int argc, const char* argv[])
 {
     /* test4(); */
     /* test7(); */
     /* test8(); */
-    test9();
+    test10();
 
     return 0;
 }

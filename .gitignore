@@ -1,6 +1,9 @@
 media
+html
+latex
 # Prerequisites
 *.d
+*.zip
 
 # Compiled Object files
 *.slo
@@ -31,7 +34,7 @@ media
 *.exe
 *.out
 *.app
-myprog
+myprog*
 *myprog
 ore latex/pdflatex auxiliary files:
 *.aux
