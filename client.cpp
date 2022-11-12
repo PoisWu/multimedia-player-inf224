@@ -2,7 +2,6 @@
 // Client C++ pour communiquer avec un serveur TCP
 // eric lecolinet - telecom paristech - 2016/2020
 //
-
 #include <iostream>
 #include <string>
 #include <algorithm>

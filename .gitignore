@@ -1,6 +1,8 @@
 media
 html
 latex
+server 
+myprog
 # Prerequisites
 *.d
 *.zip

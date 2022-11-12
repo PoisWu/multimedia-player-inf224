@@ -27,9 +27,12 @@ class Gestion{
         groupPtr create_group(std::string group_name);
 
         // print atributs of object, if not found print error
-        void print_base(std::ostream& out_stream, std::string filename) const;
+        /* void print_base(std::ostream& out_stream, std::string filename) const; */
         
-        void print_group(std::ostream& out_stream, std::string groupname) const;
+        /* void print_group(std::ostream& out_stream, std::string groupname) const; */
+
+        void print(std::ostream& out_stream, std::string name) const;
+        
 
         // print error if non object found
         void play(std::string filename) const;

@@ -33,23 +33,32 @@ groupPtr Gestion::create_group(std::string group_name){
 
 // print atributs of object, if not found print error
 
-void Gestion::print_base(std::ostream& out_stream, std::string filename) const{
-    auto it_base = tab_base.find(filename);
-    if (it_base != tab_base.end()) it_base->second->print(out_stream);
-    else out_stream << filename << "is not found" << std::endl;
-}
+/* void Gestion::print_base(std::ostream& out_stream, std::string filename) const{ */
+/*     auto it_base = tab_base.find(filename); */
+/*     if (it_base != tab_base.end()) it_base->second->print(out_stream); */
+/*     else out_stream << filename << "is not found" << std::endl; */
+/* } */
 
-void Gestion::print_group(std::ostream & out_stream, std::string groupname) const{
-    auto it_group = tab_group.find(groupname);
-    if (it_group != tab_group.end()) it_group->second->print(out_stream);
-    else out_stream << groupname << "is not found" << std::endl;
+/* void Gestion::print_group(std::ostream & out_stream, std::string groupname) const{ */
+/*     auto it_group = tab_group.find(groupname); */
+/*     if (it_group != tab_group.end()) it_group->second->print(out_stream); */
+/*     else out_stream << groupname << "is not found" << std::endl; */
+/* } */
+
+void Gestion::print(std::ostream &out_stream, std::string name) const{
+    auto it_base = tab_base.find(name);
+    auto it_group = tab_group.find(name);
+    if (it_base != tab_base.end()) it_base->second->print(out_stream);
+    else if (it_group != tab_group.end()) it_group->second->print(out_stream);
+    else out_stream << name << "is not found" << std::endl;
+
 }
 
 // print error if non object found
 void Gestion::play(std::string filename) const{
     auto it_base = tab_base.find(filename);
     if (it_base != tab_base.end()) it_base->second->run();
-    else std::cout << filename << "is not found" << std::endl;
+    else std::cout << filename << " is not found" << std::endl;
 }
 void Gestion::delete_object(std::string filename){
 
