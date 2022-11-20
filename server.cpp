@@ -38,12 +38,6 @@ int main(int argc, char* argv[])
     // the request sent by the client to the server
 
     std::cout << "request: " << request << std::endl;
-    /* std::regex find_regex("GET [0-9a-zA-Z\\.]+"); */
-    /* std::smatch filename; */
-    /* std::regex_search(request, filename, find_regex); */
-    /* std::cout << "0: " <<  filename[0] << std::endl; */
-    /* std::cout << "1: " <<  filename[1] << std::endl << std::flush; */
-    /* std::cout << "2: " <<  filename[2] << std::endl << std::flush; */
     int isget = (request.find("GET ")==0);
     int isplay = (request.find("PLAY ")==0);
     std::stringstream  ss;
@@ -60,12 +54,7 @@ int main(int argc, char* argv[])
         db.play(request.substr(5));
     }
 
-
     
-    // the response that the server sends back to the client
-
-
-    // return false would close the connecytion with the client
     return true;
   });
 

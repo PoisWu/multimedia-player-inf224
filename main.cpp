@@ -1,7 +1,6 @@
-//
-// main.cpp
-// Created on 21/10/2018
-//
+/// @file main.cpp
+/// @date 2022 
+/// @author Cheng-Yen Wu
 
 #include <iostream>
 #include <string>
@@ -29,6 +28,8 @@ using namespace std;
 
 string media_path = "/home/cheng-yen/Documents/X/4A/inf224/tp/media/";
 
+/// @fn void test4()
+/// @brief Simple test for task 4
 void test4(){
     Photo* photo1 = new Photo(0,0,"img1.jpg", media_path+"img1.jpg");
     Video* video1 = new Video(0,"vid1.mp4", media_path+"vid1.mp4");
@@ -42,6 +43,8 @@ void test4(){
 
 }
 
+/// @fn void test5()
+/// @brief Simple test for task 5
 void test5(){
     Base** table_base = new Base*[2];
     table_base[0] = new Photo(12,12, "imag1.jpg", media_path+"img1.jpg"); 
@@ -55,6 +58,8 @@ void test5(){
          
 }
 
+/// @fn void test6()
+/// @brief simple test for task 6
 void test6(){
     Film* film = new Film(3, 12, "vid1.mp4", media_path+"vid1.mp4");
     int chapiters[3]={1,2,3};
@@ -65,6 +70,8 @@ void test6(){
     delete film;
 }
 
+/// @fn void test7()
+/// @brief simple test for task 7
 void test7(){
     // Test Copy  opratior=
     Film film = Film(3, 12, "vid1.mp4", media_path+"vid1.mp4");
@@ -96,7 +103,6 @@ void test7(){
     /* delete film; */
     
 }
-
 /* void test8(){ */
 /*     Group group1 = Group("Photo"); */
 /*     group1.push_back(new Photo(12,12, "imag1.jpg", media_path+"img1.jpg")); */
@@ -106,6 +112,8 @@ void test7(){
 /*     group1.print(cout); */
 /* } */
 
+/// @fn void test9()
+/// @brief simple test for task 9
 void test9(){
     shared_ptr<Photo> p1(new Photo(12,12, "imag1.jpg", media_path+"img1.jpg"));
     shared_ptr<Photo> p2(new Photo(12,12, "imag2.jpg", media_path+"img2.jpg"));
@@ -136,6 +144,8 @@ void test9(){
     
 }
 
+/// @fn void test10()
+/// @brief simple test for task 10
 void test10(){
     Gestion gestion = Gestion();
     auto pho1 = gestion.create_photo(11,11, "imag1.jpg", media_path+"img1.jpg");
@@ -144,13 +154,9 @@ void test10(){
     auto gr1 = gestion.create_group("gr1");
     
     std::cout << "---------" << std::endl;
-    gestion.print_base(std::cout, "imag1.jpg");
     std::cout << "---------" << std::endl;
-    gestion.print_base(std::cout, "film1.mp4");
     std::cout << "---------" << std::endl;
-    gestion.print_base(std::cout, "gr1");
     std::cout << "---------" << std::endl;
-    gestion.print_group(std::cout, "gr1");
 }
 
 int main(int argc, const char* argv[])

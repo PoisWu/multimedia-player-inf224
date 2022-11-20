@@ -3,6 +3,7 @@ html
 latex
 server 
 myprog
+doc
 # Prerequisites
 *.d
 *.zip
