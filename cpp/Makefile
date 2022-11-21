@@ -9,21 +9,26 @@
 #
 # Nom du programme
 #
+#
 CLIENT=client
 SERVER=server
 CLISERV=cliserv
+PROG = myprog
+
 
 #
 # Fichiers sources (NE PAS METTRE les .h ni les .o mais seulement les .cpp)
 #
 CLIENT_SOURCES=client.cpp ccsocket.cpp 
 SERVER_SOURCES=base.cpp photo.cpp video.cpp film.cpp group.cpp gestion.cpp server.cpp tcpserver.cpp ccsocket.cpp 
-CLISERV_SOURCES=client.cpp server.cpp tcpserver.cpp ccsocket.cpp Makefile-cliserv
+# CLISERV_SOURCES=client.cpp server.cpp tcpserver.cpp ccsocket.cpp Makefile-cliserv
+PROG_SOURCES = base.cpp photo.cpp video.cpp film.cpp group.cpp gestion.cpp main.cpp\
 #
 # Fichiers objets (ne pas modifier, sauf si l'extension n'est pas .cpp)
 #
 CLIENT_OBJETS=${CLIENT_SOURCES:%.cpp=%.o}
 SERVER_OBJETS=${SERVER_SOURCES:%.cpp=%.o}
+PROG_OBJETS=${PROG_SOURCES:%.cpp=%.o}
 
 #
 # Compilateur C++ (suivant les systemes CXX ou CCC)
@@ -56,7 +61,10 @@ LDLIBS= -lpthread
 # depend-${PROG} sera un fichier contenant les dependances
 #
 
-all: ${CLIENT} ${SERVER}
+all: ${CLIENT} ${SERVER} ${PROG}
+
+run: ${SERVER}
+	./${SERVER}
 
 run-${SERVER}: ${SERVER}
 	./${SERVER}
@@ -70,11 +78,15 @@ ${CLIENT}: depend-${CLIENT} ${CLIENT_OBJETS}
 ${SERVER}: depend-${SERVER} ${SERVER_OBJETS}
 	${CXX} -o $@ ${CXXFLAGS} ${LDFLAGS} ${SERVER_OBJETS} ${LDLIBS}
 
+${PROG}: depend-${PROG} ${PROG_OBJETS}
+	${CXX} -o $@ ${CXXFLAGS} ${LDFLAGS} ${PROG_OBJETS} ${LDLIBS}
+
 clean:
-	-@$(RM) *.o depend-${CLIENT} depend-${SERVER} core 1>/dev/null 2>&1
+	-@$(RM) *.o depend-${CLIENT} depend-${SERVER} depend-${PROG} core 1>/dev/null 2>&1
 
 clean-all: clean
-	-@$(RM) -${CLIENT} -${SERVER} 1>/dev/null 2>&1
+	rm ${CLIENT} ${SERVER} ${PROG} 1>/dev/null 2>&1
+#	-@$(RM) -${CLIENT} -${SERVER} -${PROG} core 1>/dev/null 2>&1
   
 tar:
 	tar cvf ${CLISERV}.tar.gz ${CLISERV_SOURCES}
@@ -87,6 +99,10 @@ depend-${CLIENT}:
 
 depend-${SERVER}:
 	${CXX} ${CXXFLAGS} -MM ${SERVER_SOURCES} > depend-${SERVER}
+
+depend-${PROG}:
+	${CXX} ${CXXFLAGS} -MM ${PROG_SOURCES} > depend-${PROG}
+
 
 ###########################################
 #
@@ -111,3 +127,4 @@ depend-${SERVER}:
 #
 -include depend-${CLIENT}
 -include depend-${SERVER}
+-include depend-${PROG}
