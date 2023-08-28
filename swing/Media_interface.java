@@ -6,6 +6,12 @@ import java.awt.event.*;
 import  java.io.*;
 import java.net.*;
 
+/**
+ * @file Media_interface.java
+ * This interface is writen in java swing. It listens to 127.0.0.1:3331 by defaut and
+ * try to connect to the server implemented in ../cpp/server.cpp 
+ */
+
 public class Media_interface extends JFrame{
 
     private static final long serialVersionUID = 1L;
@@ -30,10 +36,14 @@ public class Media_interface extends JFrame{
     public static void main(String argv[]){
        
         new Media_interface(argv);
-        
-       
     }
-    //
+    /**
+     * @fn public Media_interface(String argv[])
+     * @brief The constructor of Media_interface.
+     * @param argv host port 
+     */
+
+
     public Media_interface(String argv[]){
         
         String host = DEFAULT_HOST;
@@ -52,26 +62,6 @@ public class Media_interface extends JFrame{
         
         // Connection okay 
         System.out.println("Client connected to "+host+":"+port);
-
-        // pour lire depuis la console
-        
-        // BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
-        
-        // Here is where it sends the request 
-        // while (true) {
-        //     System.out.print("Request: ");
-        //     try {
-        //         String request = cin.readLine();
-        //         String response = client.send(request);
-        //         System.out.println("Response: " + response);
-        //     }
-        //     catch (java.io.IOException e) {
-        //         System.err.println("Client: IO error");
-        //         return;
-        //     }
-        // }
-
-        // Bottom part 
 
         JPanel panel_bottom = new JPanel();
 
@@ -137,11 +127,20 @@ public class Media_interface extends JFrame{
         pack();
         setVisible(true);
     }
+
+    /**
+     * @brief parse the response from the server by replacing ";" by "\n"
+     * @param result The response of server
+     * @return respose parsed
+     */
     String parseResult(String result){
         String response = result.replace(";", "\n");
         return response;
     }
 
+    /**
+     * @brief This class impelement the GET action for "Search" button 
+     */
     class GETaction implements ActionListener{
         public void actionPerformed(ActionEvent e){
             String response = client.send("GET "+ textField.getText());
@@ -150,6 +149,9 @@ public class Media_interface extends JFrame{
         }
     }
     
+    /**
+     * @brief This class impelement the PLAY action for "Play" button 
+     */
     class PLAYaction implements ActionListener{
         public void actionPerformed(ActionEvent e){
             String response = client.send("PLAY "+ textField.getText());
@@ -158,11 +160,19 @@ public class Media_interface extends JFrame{
         }
     
     }
+
+    /**
+     * @brief This class impelement the CLOSE action for "close" button 
+     */
     class CloseListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             System.exit(0);
         }
     }
+
+    /**
+     * @brief This class impelement the connection TCP to the server.  
+     */
     static class Client{
       
         private Socket sock;
@@ -193,7 +203,6 @@ public class Media_interface extends JFrame{
         }
       
       // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      
 
         public String send(String request) {
             // Envoyer la requete au serveur

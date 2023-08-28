@@ -13,7 +13,7 @@
 #include <regex>
 
 const int PORT = 3331;
-const std::string media_path="/home/cheng-yen/Documents/X/4A/inf224/tp/media/";
+const std::string media_path="./media/";
 
 Gestion db = Gestion();
 auto pho1 = db.create_photo(11,11, "imag1.jpg", media_path+"imag1.jpg");
@@ -54,7 +54,6 @@ int main(int argc, char* argv[])
         db.play(request.substr(5));
     }
 
-    
     return true;
   });
 
