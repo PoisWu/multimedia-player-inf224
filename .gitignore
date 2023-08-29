@@ -61,7 +61,7 @@ ore latex/pdflatex auxiliary files:
 *.ps
 *.eps
 /* # # *.pdf */
-*.pdf
+# *.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
